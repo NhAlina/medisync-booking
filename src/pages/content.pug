@@ -1,6 +1,6 @@
 main.main-content
   .container
-    // HERO
+    // 1. HERO СЕКЦІЯ
     section.hero-section
       .hero-left
         .today-badge
@@ -32,7 +32,7 @@ main.main-content
             span.badge-time завтра, 11:30
           p.quick-note Розклад оновлюється в реальному часі
 
-    // ЛІКАРІ
+    // 2. СЕКЦІЯ ЛІКАРІВ (6 спеціалістів)
     section.doctors-section#doctors
       h2 Наші спеціалісти
       p.subtitle Оберіть лікаря — ми підставимо його у форму запису.
@@ -52,7 +52,7 @@ main.main-content
               .detail-row
                 span Первинний прийом
                 strong 600 грн
-            button.btn-select(type="button" onclick="document.getElementById('doc-select').value='600'; document.getElementById('doc-select').dispatchEvent(new Event('change'));") Обрати спеціаліста
+            button.btn-select(type="button" onclick="selectDoctorByIndex(0)") Обрати спеціаліста
 
           .doctor-card
             .doc-header
@@ -67,7 +67,7 @@ main.main-content
               .detail-row
                 span Первинний прийом
                 strong 900 грн
-            button.btn-select(type="button" onclick="document.getElementById('doc-select').value='900'; document.getElementById('doc-select').dispatchEvent(new Event('change'));") Обрати спеціаліста
+            button.btn-select(type="button" onclick="selectDoctorByIndex(1)") Обрати спеціаліста
 
           .doctor-card
             .doc-header
@@ -82,16 +82,60 @@ main.main-content
               .detail-row
                 span Первинний прийом
                 strong 750 грн
-            button.btn-select(type="button" onclick="document.getElementById('doc-select').value='750'; document.getElementById('doc-select').dispatchEvent(new Event('change'));") Обрати спеціаліста
+            button.btn-select(type="button" onclick="selectDoctorByIndex(2)") Обрати спеціаліста
+
+          .doctor-card
+            .doc-header
+              .avatar-circle.blue БВ
+              .doc-meta
+                h4 Бондаренко Василь Іванович
+                span.spec Офтальмолог
+            .doc-details
+              .detail-row
+                span Досвід роботи
+                strong 14 років
+              .detail-row
+                span Первинний прийом
+                strong 700 грн
+            button.btn-select(type="button" onclick="selectDoctorByIndex(3)") Обрати спеціаліста
+
+          .doctor-card
+            .doc-header
+              .avatar-circle.teal КН
+              .doc-meta
+                h4 Кравченко Наталія Сергіївна
+                span.spec Ендокринолог
+            .doc-details
+              .detail-row
+                span Досвід роботи
+                strong 11 років
+              .detail-row
+                span Первинний прийом
+                strong 850 грн
+            button.btn-select(type="button" onclick="selectDoctorByIndex(4)") Обрати спеціаліста
+
+          .doctor-card
+            .doc-header
+              .avatar-circle.dark-blue ТМ
+              .doc-meta
+                h4 Ткаченко Михайло Юрійович
+                span.spec Хірург
+            .doc-details
+              .detail-row
+                span Досвід роботи
+                strong 18 років
+              .detail-row
+                span Первинний прийом
+                strong 950 грн
+            button.btn-select(type="button" onclick="selectDoctorByIndex(5)") Обрати спеціаліста
         button.slider-arrow(type="button") ›
 
-    // ФОРМА ОНЛАЙН-ЗАПИСУ
+    // 3. ФОРМА ОНЛАЙН-ЗАПИСУ
     section.booking-section#booking
       .booking-card
         .booking-left
-          h3.step-title 1. Оберіть дату (жовтень 2026 р.)
+          h3.step-title 1. Оберіть дату (жовтень-листопад 2026 р.)
           .calendar-box
-            // Рядок назв днів тижня зверху
             .weekdays-row
               span Пн
               span Вт
@@ -100,7 +144,6 @@ main.main-content
               span Пт
               span Сб
               span Нд
-            // Сітка з числами дат (21 день розкладу)
             .days-grid
               // 1-й тиждень
               label.day-cell.today
@@ -173,36 +216,7 @@ main.main-content
 
           h3.step-title 2. Оберіть час (зміна 09:00 - 14:00)
           .slots-grid
-            label.slot-btn
-              input(type="radio" name="time-slot" value="09:00")
-              span 09:00
-            label.slot-btn
-              input(type="radio" name="time-slot" value="09:30")
-              span 09:30
-            label.slot-btn.disabled
-              input(type="radio" name="time-slot" disabled)
-              span 10:00
-            label.slot-btn
-              input(type="radio" name="time-slot" value="10:30")
-              span 10:30
-            label.slot-btn
-              input(type="radio" name="time-slot" value="11:00")
-              span 11:00
-            label.slot-btn
-              input(type="radio" name="time-slot" value="11:30" checked)
-              span 11:30
-            label.slot-btn
-              input(type="radio" name="time-slot" value="12:00")
-              span 12:00
-            label.slot-btn.disabled
-              input(type="radio" name="time-slot" disabled)
-              span 12:30
-            label.slot-btn
-              input(type="radio" name="time-slot" value="13:00")
-              span 13:00
-            label.slot-btn
-              input(type="radio" name="time-slot" value="13:30")
-              span 13:30
+            // Слоти рендеряться динамічно скриптом з doctors.json залежно від дати
           p.hint Перекреслені години вже зайняті іншими пацієнтами.
 
         .booking-right
@@ -211,9 +225,7 @@ main.main-content
             .field-group
               label ОБРАНИЙ СПЕЦІАЛІСТ
               select#doc-select
-                option(value="600") Коваленко О. М. — Терапевт (600 грн)
-                option(value="900") Мельник А. В. — Кардіолог (900 грн)
-                option(value="750") Шевченко І. П. — Невролог (750 грн)
+                option(value="") Завантаження списку спеціалістів...
 
             .field-group
               label ТИП КОНСУЛЬТАЦІЇ
@@ -228,8 +240,10 @@ main.main-content
 
             .field-group
               label КОНТАКТНІ ДАНІ ПАЦІЄНТА
-              input(type="text" placeholder="Введіть ваше ПІБ (наприклад, Коваленко Олена)" required)
-              input(type="tel" placeholder="+380 (XX) XXX-XX-XX" style="margin-top: 8px;" required)
+              input#patient-name(type="text" placeholder="Введіть ПІБ (наприклад, Коваленко Олена)" required)
+              span.error-msg#name-error
+              input#patient-phone(type="tel" placeholder="+380 (XX) XXX-XX-XX" style="margin-top: 8px;" required)
+              span.error-msg#phone-error
 
             .field-group
               label СПОСІБ ОПЛАТИ
@@ -246,3 +260,40 @@ main.main-content
               strong#total-price 600 грн
 
             button.submit-btn(type="button") Підтвердити запис
+
+    // МОДАЛЬНЕ ВІКНО: ЕЛЕКТРОННИЙ ТАЛОН
+    .ticket-modal-overlay#ticket-modal
+      .ticket-modal-card
+        .ticket-modal-header
+          .check-badge ✓
+          h3 Запис успішно підтверджено!
+          p.ticket-num#modal-ticket-id Талон №MS-2026-0000
+        
+        .ticket-details
+          .ticket-row
+            span Пацієнт:
+            strong#modal-patient-name -
+          .ticket-row
+            span Телефон:
+            strong#modal-patient-phone -
+          .ticket-row
+            span Спеціаліст:
+            strong#modal-doctor-name -
+          .ticket-row
+            span Дата прийому:
+            strong#modal-date -
+          .ticket-row
+            span Час візиту:
+            strong#modal-time -
+          .ticket-row
+            span Тип консультації:
+            strong#modal-type -
+          .ticket-row
+            span Спосіб оплати:
+            strong#modal-payment -
+          .ticket-row.total
+            span До сплати:
+            strong#modal-total-price 0 грн
+        
+        p.ticket-note Збережіть номер талона або покажіть його на рецепції перед прийомом.
+        button.btn-modal-close(type="button" onclick="closeTicketModal()") Зрозуміло, закрити

@@ -1,6 +1,5 @@
 @import './mixin';
 
-// Фірмова медична палітра MediSync
 $teal: #0E9F90;
 $blue: #2563EB;
 $dark: #0F172A;
@@ -37,7 +36,7 @@ body {
 }
 
 // --------------------------------------------------
-// 1. ШАПКА САЙТУ (HEADER)
+// ШАПКА САЙТУ 
 // --------------------------------------------------
 .site-header {
   background: $white;
@@ -112,7 +111,7 @@ body {
 }
 
 // --------------------------------------------------
-// 2. HERO СЕКЦІЯ
+// HERO СЕКЦІЯ
 // --------------------------------------------------
 .hero-section {
   padding: 44px 0 32px;
@@ -227,7 +226,7 @@ body {
 }
 
 // --------------------------------------------------
-// 3. СЕКЦІЯ ЛІКАРІВ
+// СЕКЦІЯ ЛІКАРІВ
 // --------------------------------------------------
 .doctors-section {
   padding: 24px 0 36px;
@@ -345,7 +344,7 @@ body {
 }
 
 // --------------------------------------------------
-// 4. ФОРМА ОНЛАЙН-ЗАПИСУ
+// ФОРМА ОНЛАЙН-ЗАПИСУ
 // --------------------------------------------------
 .booking-section {
   padding: 10px 0 50px;
@@ -425,7 +424,7 @@ body {
   }
 }
 
-// Слоти часу по 30 хв (09:00 - 14:00)
+// Слоти часу по 30 хв 
 .slots-grid {
   display: grid;
   grid-template-columns: repeat(5, 1fr);
@@ -629,7 +628,7 @@ body {
 }
 
 // --------------------------------------------------
-// 5. ТЕМНИЙ МЕДИЧНИЙ ФУТЕР
+// ФУТЕР
 // --------------------------------------------------
 .site-footer {
   background-color: $footer-bg;
@@ -681,5 +680,143 @@ body {
     text-align: center;
     font-size: 11px;
     color: #64748B;
+  }
+}
+
+// Червона підсвітка та написи помилок валідації 
+.field-group {
+  input.invalid {
+    border-color: #EF4444 !important;
+    background-color: #FEF2F2 !important;
+  }
+
+  .error-msg {
+    display: none;
+    color: #EF4444;
+    font-size: 11px;
+    font-weight: 600;
+    margin-top: 4px;
+    text-align: left;
+
+    &.visible {
+      display: block;
+    }
+  }
+}
+
+// Модальне вікно електронного талона 
+.ticket-modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(15, 23, 42, 0.65); // Напівпрозоре затемнення
+  backdrop-filter: blur(4px);
+  z-index: 999;
+  @include flex-box(center, center);
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease-in-out;
+
+  &.active {
+    opacity: 1;
+    visibility: visible;
+  }
+
+  .ticket-modal-card {
+    @include card-box($white, 20px);
+    width: 90%;
+    max-width: 480px;
+    padding: 32px 28px;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+    text-align: center;
+    transform: scale(0.9);
+    transition: transform 0.3s ease;
+
+    .ticket-modal-header {
+      margin-bottom: 20px;
+
+      .check-badge {
+        width: 52px;
+        height: 52px;
+        background: #DCFCE7;
+        color: #16A34A;
+        font-size: 26px;
+        font-weight: 900;
+        border-radius: 50%;
+        @include flex-box(center, center);
+        margin: 0 auto 12px;
+      }
+
+      h3 {
+        font-size: 20px;
+        font-weight: 800;
+        color: $dark;
+      }
+
+      .ticket-num {
+        font-size: 13px;
+        font-weight: 700;
+        color: $teal;
+        margin-top: 4px;
+      }
+    }
+
+    .ticket-details {
+      background: #F8FAFC;
+      border: 1px dashed #CBD5E1;
+      border-radius: 12px;
+      padding: 16px;
+      margin-bottom: 18px;
+
+      .ticket-row {
+        @include flex-box(space-between, center);
+        font-size: 13px;
+        padding: 6px 0;
+        border-bottom: 1px solid #F1F5F9;
+
+        span {
+          color: $muted;
+        }
+
+        strong {
+          color: $dark;
+        }
+
+        &.total {
+          border-bottom: none;
+          padding-top: 10px;
+          margin-top: 4px;
+          span {
+            font-size: 14px;
+            font-weight: 700;
+            color: $dark;
+          }
+          strong {
+            font-size: 18px;
+            color: $teal;
+          }
+        }
+      }
+    }
+
+    .ticket-note {
+      font-size: 11.5px;
+      color: $muted;
+      margin-bottom: 20px;
+      line-height: 1.4;
+    }
+
+    .btn-modal-close {
+      @include button-custom($teal);
+      width: 100%;
+      padding: 12px;
+      font-size: 14px;
+    }
+  }
+
+  &.active .ticket-modal-card {
+    transform: scale(1);
   }
 }
