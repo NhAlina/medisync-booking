@@ -1,0 +1,248 @@
+main.main-content
+  .container
+    // HERO
+    section.hero-section
+      .hero-left
+        .today-badge
+          span.dot
+          | Сьогодні вільно 9 прийомів
+        h1.hero-title Запис до лікаря за 1 хвилину — без черг та очікувань
+        p.hero-desc Оберіть спеціаліста, зручний час і підтвердіть запис онлайн. Талон прийде одразу, а на прийом ви потрапите точно в призначений час.
+        .hero-actions
+          a.btn-primary(href="#booking") Записатися на прийом
+          a.btn-secondary(href="#doctors") Обрати лікаря
+
+      .hero-right
+        .quick-slots-card
+          h3 Найближчі вільні слоти
+          .slot-row
+            .doc-info
+              strong Терапевт
+              span Коваленко О. М.
+            span.badge-time сьогодні, 14:30
+          .slot-row
+            .doc-info
+              strong Кардіолог
+              span Мельник А. В.
+            span.badge-time завтра, 09:00
+          .slot-row
+            .doc-info
+              strong Невролог
+              span Шевченко І. П.
+            span.badge-time завтра, 11:30
+          p.quick-note Розклад оновлюється в реальному часі
+
+    // ЛІКАРІ
+    section.doctors-section#doctors
+      h2 Наші спеціалісти
+      p.subtitle Оберіть лікаря — ми підставимо його у форму запису.
+      .doctors-slider
+        button.slider-arrow(type="button") ‹
+        .doctors-grid
+          .doctor-card
+            .doc-header
+              .avatar-circle.teal КО
+              .doc-meta
+                h4 Коваленко Олена Миколаївна
+                span.spec Терапевт
+            .doc-details
+              .detail-row
+                span Досвід роботи
+                strong 12 років
+              .detail-row
+                span Первинний прийом
+                strong 600 грн
+            button.btn-select(type="button" onclick="document.getElementById('doc-select').value='600'; document.getElementById('doc-select').dispatchEvent(new Event('change'));") Обрати спеціаліста
+
+          .doctor-card
+            .doc-header
+              .avatar-circle.blue МА
+              .doc-meta
+                h4 Мельник Андрій Віталійович
+                span.spec Кардіолог
+            .doc-details
+              .detail-row
+                span Досвід роботи
+                strong 15 років
+              .detail-row
+                span Первинний прийом
+                strong 900 грн
+            button.btn-select(type="button" onclick="document.getElementById('doc-select').value='900'; document.getElementById('doc-select').dispatchEvent(new Event('change'));") Обрати спеціаліста
+
+          .doctor-card
+            .doc-header
+              .avatar-circle.dark-blue ШІ
+              .doc-meta
+                h4 Шевченко Ірина Петрівна
+                span.spec Невролог
+            .doc-details
+              .detail-row
+                span Досвід роботи
+                strong 9 років
+              .detail-row
+                span Первинний прийом
+                strong 750 грн
+            button.btn-select(type="button" onclick="document.getElementById('doc-select').value='750'; document.getElementById('doc-select').dispatchEvent(new Event('change'));") Обрати спеціаліста
+        button.slider-arrow(type="button") ›
+
+    // ФОРМА ОНЛАЙН-ЗАПИСУ
+    section.booking-section#booking
+      .booking-card
+        .booking-left
+          h3.step-title 1. Оберіть дату (жовтень 2026 р.)
+          .calendar-box
+            // Рядок назв днів тижня зверху
+            .weekdays-row
+              span Пн
+              span Вт
+              span Ср
+              span Чт
+              span Пт
+              span Сб
+              span Нд
+            // Сітка з числами дат (21 день розкладу)
+            .days-grid
+              // 1-й тиждень
+              label.day-cell.today
+                input(type="radio" name="booking-day" checked)
+                span 16
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 17
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 18
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 19
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 20
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 21
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 22
+
+              // 2-й тиждень
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 23
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 24
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 25
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 26
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 27
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 28
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 29
+
+              // 3-й тиждень
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 30
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 31
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 1
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 2
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 3
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 4
+              label.day-cell
+                input(type="radio" name="booking-day")
+                span 5
+
+          h3.step-title 2. Оберіть час (зміна 09:00 - 14:00)
+          .slots-grid
+            label.slot-btn
+              input(type="radio" name="time-slot" value="09:00")
+              span 09:00
+            label.slot-btn
+              input(type="radio" name="time-slot" value="09:30")
+              span 09:30
+            label.slot-btn.disabled
+              input(type="radio" name="time-slot" disabled)
+              span 10:00
+            label.slot-btn
+              input(type="radio" name="time-slot" value="10:30")
+              span 10:30
+            label.slot-btn
+              input(type="radio" name="time-slot" value="11:00")
+              span 11:00
+            label.slot-btn
+              input(type="radio" name="time-slot" value="11:30" checked)
+              span 11:30
+            label.slot-btn
+              input(type="radio" name="time-slot" value="12:00")
+              span 12:00
+            label.slot-btn.disabled
+              input(type="radio" name="time-slot" disabled)
+              span 12:30
+            label.slot-btn
+              input(type="radio" name="time-slot" value="13:00")
+              span 13:00
+            label.slot-btn
+              input(type="radio" name="time-slot" value="13:30")
+              span 13:30
+          p.hint Перекреслені години вже зайняті іншими пацієнтами.
+
+        .booking-right
+          .form-box
+            h3.form-heading 3. Ваші дані
+            .field-group
+              label ОБРАНИЙ СПЕЦІАЛІСТ
+              select#doc-select
+                option(value="600") Коваленко О. М. — Терапевт (600 грн)
+                option(value="900") Мельник А. В. — Кардіолог (900 грн)
+                option(value="750") Шевченко І. П. — Невролог (750 грн)
+
+            .field-group
+              label ТИП КОНСУЛЬТАЦІЇ
+              .two-cols
+                label.pill-radio
+                  input(type="radio" name="consultation-type" value="primary" checked)
+                  span.text-label Первинний
+                label.pill-radio
+                  input(type="radio" name="consultation-type" value="secondary")
+                  span.text-label Повторний
+                  span.badge-discount -25%
+
+            .field-group
+              label КОНТАКТНІ ДАНІ ПАЦІЄНТА
+              input(type="text" placeholder="Введіть ваше ПІБ (наприклад, Коваленко Олена)" required)
+              input(type="tel" placeholder="+380 (XX) XXX-XX-XX" style="margin-top: 8px;" required)
+
+            .field-group
+              label СПОСІБ ОПЛАТИ
+              .two-cols
+                label.pill-radio
+                  input(type="radio" name="payment-method" value="reception" checked)
+                  span.text-label На рецепції
+                label.pill-radio
+                  input(type="radio" name="payment-method" value="online")
+                  span.text-label Онлайн-картка
+
+            .price-row
+              span До сплати:
+              strong#total-price 600 грн
+
+            button.submit-btn(type="button") Підтвердити запис

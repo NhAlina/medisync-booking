@@ -1,0 +1,31 @@
+// Міксин 1: Універсальне вирівнювання через Flexbox
+@mixin flex-box($justify: center, $align: center, $direction: row) {
+  display: flex;
+  justify-content: $justify;
+  align-items: $align;
+  flex-direction: $direction;
+}
+
+// Міксин 2: Оформлення блоків, карток та полів
+@mixin card-box($bg: #FFFFFF, $radius: 16px) {
+  background-color: $bg;
+  border-radius: $radius;
+  border: 1px solid #E2E8F0;
+  box-shadow: 0 4px 16px rgba(15, 23, 42, 0.04);
+}
+
+// Міксин 3: Стилізація кнопок із параметрами
+@mixin button-custom($bg, $color: #FFFFFF) {
+  background: $bg;
+  color: $color;
+  border: none;
+  border-radius: 10px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+
+  &:hover {
+    opacity: 0.92;
+    transform: translateY(-1px);
+  }
+}
