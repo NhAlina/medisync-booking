@@ -512,7 +512,6 @@ body {
       }
     }
 
-    // Відсунута стрілочка та відступ тексту
     select {
       width: 100%;
       padding: 10px 40px 10px 14px;
@@ -818,5 +817,233 @@ body {
 
   &.active .ticket-modal-card {
     transform: scale(1);
+  }
+}
+
+// ==========================================
+// СМАРТФОНІВ ТА ПЛАНШЕТІВ
+// ==========================================
+
+html, body {
+  overflow-x: hidden !important;
+  max-width: 100vw !important;
+  width: 100% !important;
+}
+
+@media screen and (max-width: 768px) {
+  // Обмежуємо всі блоки строго по ширині екрана
+  *, *::before, *::after {
+    box-sizing: border-box !important;
+  }
+
+  .container {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 12px !important;
+  }
+
+  // 1. ШАПКА
+  .site-header {
+    .header-inner {
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 12px !important;
+    }
+
+    .main-nav {
+      display: flex !important;
+      flex-wrap: wrap !important;
+      justify-content: center !important;
+      gap: 10px !important;
+      margin: 6px 0 !important;
+
+      a {
+        margin: 0 4px !important;
+        font-size: 13px !important;
+      }
+    }
+
+    .header-right {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      gap: 8px !important;
+
+      .phone {
+        margin-right: 0 !important;
+      }
+    }
+  }
+
+  // 2. HERO-СЕКЦІЯ (СТРОГО В СТОВПЧИК)
+  .hero-section {
+    display: flex !important;
+    flex-direction: column !important;
+    gap: 20px !important;
+    padding: 20px 0 !important;
+
+    .hero-left,
+    .hero-right {
+      width: 100% !important;
+      max-width: 100% !important;
+      flex: 1 1 100% !important;
+    }
+
+    .hero-title {
+      font-size: 22px !important;
+      line-height: 1.3 !important;
+    }
+
+    .hero-actions {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 10px !important;
+
+      a, button {
+        width: 100% !important;
+        text-align: center !important;
+      }
+    }
+  }
+
+  // 3. ВИПРАВЛЕННЯ НАЛІЗАННЯ ТЕКСТУ В КАРТЦІ СЛОТІВ
+  .quick-slots-card {
+    width: 100% !important;
+    padding: 16px !important;
+
+    .slot-row {
+      display: flex !important;
+      flex-direction: row !important;
+      justify-content: space-between !important;
+      align-items: center !important;
+      gap: 12px !important;
+      padding: 10px 0 !important;
+
+      .doc-info {
+        display: flex !important;
+        flex-direction: column !important;
+        min-width: 0 !important; // дозволяє тексту переноситися
+        flex: 1 1 auto !important;
+
+        strong {
+          font-size: 14px !important;
+          word-break: break-word !important;
+        }
+
+        span {
+          font-size: 12px !important;
+          color: #64748B !important;
+        }
+      }
+
+      .badge-time {
+        flex-shrink: 0 !important;
+        white-space: nowrap !important;
+        font-size: 11px !important;
+        padding: 4px 8px !important;
+      }
+    }
+  }
+
+  // 4. КАРТКИ ЛІКАРІВ (ОДНА ЗА ОДНОЮ)
+  .doctors-slider {
+    .slider-arrow {
+      display: none !important;
+    }
+
+    .doctors-grid {
+      display: flex !important;
+      flex-direction: column !important;
+      gap: 16px !important;
+      width: 100% !important;
+
+      .doctor-card {
+        width: 100% !important;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 1024px) {
+  // Головна біла картка стає строго вертикальною
+  .booking-section .booking-card {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    padding: 16px !important;
+    box-sizing: border-box !important;
+  }
+
+  // Ліва частина (календар + слоти) на 100% ширини
+  .booking-section .booking-card .booking-left {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 0 24px 0 !important;
+  }
+
+
+  .booking-section .booking-card .booking-right {
+    width: 100% !important;
+    max-width: 100% !important;
+    padding: 0 !important;
+    margin: 0 !important;
+    border-left: none !important;
+    box-sizing: border-box !important;
+
+    .form-box {
+      width: 100% !important;
+    }
+
+    // Всі інпути та селект строго по ширині
+    input[type="text"],
+    input[type="tel"],
+    select {
+      width: 100% !important;
+      max-width: 100% !important;
+      box-sizing: border-box !important;
+    }
+
+    // Радіокнопки: дві поруч або в стовпчик без розпирання
+    .two-cols {
+      display: flex !important;
+      flex-direction: row !important;
+      gap: 8px !important;
+      width: 100% !important;
+      box-sizing: border-box !important;
+
+      @media screen and (max-width: 480px) {
+        flex-direction: column !important;
+      }
+    }
+
+    .pill-radio {
+      flex: 1 1 auto !important;
+      width: 100% !important;
+      min-width: 0 !important;
+      box-sizing: border-box !important;
+      justify-content: flex-start !important;
+      padding: 8px 10px !important;
+
+      input[type="radio"] {
+        margin: 0 6px 0 0 !important;
+        flex-shrink: 0 !important;
+      }
+
+      .text-label {
+        font-size: 13px !important;
+        white-space: nowrap !important;
+      }
+
+      .badge-discount {
+        margin-left: auto !important;
+      }
+    }
+
+    // Кнопка на всю ширину форми
+    .submit-btn {
+      width: 100% !important;
+      box-sizing: border-box !important;
+    }
   }
 }
